@@ -40,23 +40,22 @@ const questions = [{
     message: 'Provide testing instructions: ',
     name: 'test'
 }, {
-    type: 'checkbox',
+    type: 'list',
     message: 'which license would you like to include?',
     name: 'license',
-    choices: ['l1','l2','l3'],
-    checked: true
+    choices: ['Apahce License 2.0','GNU General Public License v3.0','MIT License', 'None'],
 }
 ];
 // i need to place these responses into a md format, then pass that as my data
 inquirer.prompt(questions).then((response) => {
     writeToFile('README.md', response);
+    
 })
+
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, answers) {
-    // title will look smth like this
-    // same w other headers/descriptions
-    
     fs.writeFileSync(fileName, generateMarkdown(answers), 
     (err => {if (err) throw err
     else{console.log('file written')}}))
