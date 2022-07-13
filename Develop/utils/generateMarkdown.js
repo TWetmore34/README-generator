@@ -5,57 +5,51 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  switch(license){
-    case 'None':
-      break;
-    case 'Apahce License 2.0':
-      return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]';
-      break;
-    case 'GNU General Public License v3.0':
-      return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
-      break;
-    case 'MIT License':
-      return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-      break;
+  const licenses = {
+    'None': '',
+    'Apahce License 2.0': '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]',
+    'GNU General Public License v3.0': '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+    'MIT License': '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
   }
+  return licenses[license] ?? 'license not found';
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  switch(license){
-    case 'None':
-      break;
-    case 'Apahce License 2.0':
-      return '(https://opensource.org/licenses/Apache-2.0)';
-      break;
-    case 'GNU General Public License v3.0':
-      '(https://www.gnu.org/licenses/gpl-3.0)';
-      break;
-    case 'MIT License':
-      return '(https://opensource.org/licenses/MIT)';
-      break;
+  const licenses = {
+    'None': '',
+    'Apahce License 2.0': '(https://opensource.org/licenses/Apache-2.0)\n',
+    'GNU General Public License v3.0': '(https://www.gnu.org/licenses/gpl-3.0)\n',
+    'MIT License': '(https://opensource.org/licenses/MIT)\n'
   }
+  return licenses[license] ?? 'License not found';
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
-  switch(license){
-    case 'None':
-      break;
-    case 'Apahce License 2.0':
-      return `## License`
-      break;
-    case 'GNU General Public License v3.0':
-      return `## License`
-      break;
-    case 'MIT License':
-      return `## License`
-      break;
-  }
-}
+function renderLicenseSection(license, data) {
+  if(license === 'None'){
+    return `## Contribution Guidelines
+  ${data.contribution} 
 
+  ## Testing Instructions
+  ${data.test}
+  
+  ## Questions
+  Feel free to contact me by email: ${data.email} or by Github: ${data.username}`
+  } else {return `## License Link
+  ${renderLicenseLink(data.license)} 
+  ## Contribution Guidelines
+  ${data.contribution} 
+
+  ## Testing Instructions
+  ${data.test}
+
+  ## Questions
+  Feel free to contact me by email: ${data.email} or by Github: ${data.username}`}
+}
+// TODO: run a conditional statement to restructure if license is rendered or not
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}   ${renderLicenseBadge(data.license)}
@@ -71,16 +65,11 @@ function generateMarkdown(data) {
   
   ## Project installation
   ${data.install} 
+
   ## Project Use
   ${data.use}
- ${renderLicenseSection(data.license)}
-  ${renderLicenseLink(data.license)}
-  ## Contribution Guidelines
-  ${data.contribution} 
-  ## Testing Instructions
-  ${data.test}
-  ## Questions
-  Feel free to contact me by email: ${data.email} or by Github: ${data.username}`;
+
+  ${renderLicenseSection(data.license, data)}`;
 }
 
 module.exports = generateMarkdown;
