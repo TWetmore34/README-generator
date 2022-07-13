@@ -1,6 +1,5 @@
-
-  # asdf   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]
-  asdf
+# README Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  Generate a professional readme file in the console
   
   ## Table of Contents
   1. [Installation](#project-installation)
@@ -11,14 +10,14 @@
   6. [Questions](#(questions))
   
   ## Project installation
-  asdf 
+  Use git clone to download the repository and run npm start 
   ## Project Use
-  asdf
+  Run npm start in the console
  ## License
-  undefined
+  (https://opensource.org/licenses/MIT)
   ## Contribution Guidelines
-  afsd 
+  Feel free to message me with potential contributions 
   ## Testing Instructions
-  df
+  
   ## Questions
-  Feel free to contact me by email: asdf or by Github: asdf
+  Feel free to contact me by email: tjwetmore34@gmail.com or by Github: TWetmore34

@@ -46,7 +46,7 @@ const questions = [{
     choices: ['Apahce License 2.0','GNU General Public License v3.0','MIT License', 'None'],
 }
 ];
-// i need to place these responses into a md format, then pass that as my data
+
 inquirer.prompt(questions).then((response) => {
     writeToFile('README.md', response);
     

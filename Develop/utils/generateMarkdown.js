@@ -45,15 +45,12 @@ function renderLicenseSection(license) {
     case 'None':
       break;
     case 'Apahce License 2.0':
-      console.log('Apahce License 2.0');
       return `## License`
       break;
     case 'GNU General Public License v3.0':
-      console.log('GNU General Public License v3.0');
       return `## License`
       break;
     case 'MIT License':
-      console.log('MIT License');
       return `## License`
       break;
   }
@@ -61,8 +58,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `
-  # ${data.title}   ${renderLicenseBadge(data.license)}
+  return `# ${data.title}   ${renderLicenseBadge(data.license)}
   ${data.desc}
   
   ## Table of Contents
