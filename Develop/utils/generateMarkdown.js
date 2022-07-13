@@ -1,9 +1,4 @@
-// what are licenses in this situation? I know theres a standard set of a few of them, but im not really sure what they are or where theyd go in a readme
-
-// otherwise tho, we just set a switch statement to check which license was chosen, and return each of them accordingly. Then we place the callback functions in the MD and were done!
-
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// function runs the input string from answers.license in the index file to search for one of 4 options. the key for each will render out the badge link
 function renderLicenseBadge(license) {
   const licenses = {
     'None': '',
@@ -14,8 +9,7 @@ function renderLicenseBadge(license) {
   return licenses[license] ?? 'license not found';
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// Works identically to above function, but returns the license link
 function renderLicenseLink(license) {
   const licenses = {
     'None': '',
@@ -26,9 +20,9 @@ function renderLicenseLink(license) {
   return licenses[license] ?? 'License not found';
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// renders the license section and all sections below it to eleminate extra whitespace that would otherwise appear
 function renderLicenseSection(license, data) {
+  // returns MD formatted without a license section
   if(license === 'None'){
     return `## Contribution Guidelines
   ${data.contribution} 
@@ -38,7 +32,9 @@ function renderLicenseSection(license, data) {
   
   ## Questions
   Feel free to contact me by email: ${data.email} or by Github: ${data.username}`
-  } else {return `## License Link
+  } 
+  // returns MD formatted with a license section
+  else {return `## License Link
   ${renderLicenseLink(data.license)} 
   ## Contribution Guidelines
   ${data.contribution} 
@@ -49,8 +45,7 @@ function renderLicenseSection(license, data) {
   ## Questions
   Feel free to contact me by email: ${data.email} or by Github: ${data.username}`}
 }
-// TODO: run a conditional statement to restructure if license is rendered or not
-// TODO: Create a function to generate markdown for README
+// Generates markedown for the index.js file to write as the readme
 function generateMarkdown(data) {
   return `# ${data.title}   ${renderLicenseBadge(data.license)}
   ${data.desc}
@@ -71,5 +66,5 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(data.license, data)}`;
 }
-
+// exports file for use in index.js
 module.exports = generateMarkdown;

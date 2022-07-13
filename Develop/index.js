@@ -1,12 +1,9 @@
-// ok so the things im still struggling with (for office hours)
-// how to format the js so the md comes out right- ik literals are great for that, and i think ill be using \n a lot, but im not sure if theres an easier way. especially considering fs.writefile only has one parameter for data, so all of it has to be passed at once?
-
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+// Creates an array of questions for user input
 const questions = [{
     type: 'email',
     message: 'Enter your Github Email',
@@ -47,24 +44,16 @@ const questions = [{
 }
 ];
 
+// Set up inquirer questions to be followed by writeToFile - this solves issues of synchronicity
 inquirer.prompt(questions).then((response) => {
     writeToFile('README.md', response);
     
 })
 
-
-
-// TODO: Create a function to write README file
+// writes README file using data from ./utils/generateMarkdown using the answers passed from inquirer.prompt
 function writeToFile(fileName, answers) {
     fs.writeFileSync(fileName, generateMarkdown(answers), 
     (err => {if (err) throw err
     else{console.log('file written')}}))
-    
 }
-
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
+// simply open the console and type npm run start or node index.js to create your README.md file!
